@@ -1,8 +1,24 @@
 <?php
 
+// Função para retornar o objeto meta field
+// Não precisa colocar o id da página se o meta field tiver na mesma página
+function get_field_cmb2($key, $page_id = 0)
+{
+    $id = $page_id !== 0 ? $page_id : get_the_ID();
+    return get_post_meta($id, $key, true);
+}
+
+// Imprime o objeto meta field
+function the_field_cmb2($key, $page_id = 0)
+{
+    echo get_field_cmb2($key, $page_id);
+}
+
+
 add_action('cmb2_admin_init', 'cmb2_fields_home');
 
-function cmb2_fields_home(){
+function cmb2_fields_home()
+{
     // Criando um bloco
     $cmb = new_cmb2_box([
         'id' => 'home_box',

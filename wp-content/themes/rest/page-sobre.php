@@ -11,7 +11,7 @@
 			<h2 class="subtitulo"><?php the_title(); ?></h2>
 
 			<div class="grid-8">
-				<img src="img/rest-fachada.jpg" alt="Fachada do Rest">
+				<img src="<?php the_field_cmb2('foto_rest'); ?>" alt="Fachada do Rest">
 			</div>
 
 			<div class="grid-8">

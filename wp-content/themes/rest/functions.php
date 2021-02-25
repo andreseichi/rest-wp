@@ -21,7 +21,7 @@ function cmb2_fields_home()
     // Criando um bloco
     $cmb = new_cmb2_box([
         'id' => 'home_box',
-        'title' => 'Campo personalizado do Menu da Semana',
+        'title' => 'Campo personalizado do Menu da Semana - CMB2',
         'object_types' => ['page'],
         'show_on' => [
             'key' => 'page-template',
@@ -29,17 +29,40 @@ function cmb2_fields_home()
         ],
     ]);
 
-    // Adicionando campo
-    $cmb->add_field([
-        'name' => 'Comida',
-        'id' => 'comida',
+    // Criando campo de repetição
+    $pratos = $cmb->add_field([
+        'name' => 'Pratos',
+        'id' => 'pratos',
+        'type' => 'group',
+        'repeatable' => true,
+        'options' => [
+            'group_title' => 'Prato {#}',
+            'add_button' => 'Adicionar prato',
+            'remove_button' => 'Remover prato',
+            'remove_confirm' => 'Deseja remover o prato?',
+            'sortable' => true,
+        ],
+    ]);
+
+    // Adicionando subfield
+    $cmb->add_group_field($pratos, [
+        'name' => 'Nome',
+        'id' => 'nome',
         'type' => 'text',
     ]);
 
-    $cmb->add_field([
+    // Adicionando subfield
+    $cmb->add_group_field($pratos, [
         'name' => 'Descrição',
         'id' => 'descricao',
         'type' => 'textarea',
+    ]);
+
+    // Adicionando subfield
+    $cmb->add_group_field($pratos, [
+        'name' => 'Preço',
+        'id' => 'preco',
+        'type' => 'text',
     ]);
 }
 

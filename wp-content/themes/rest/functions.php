@@ -106,6 +106,13 @@ function cmb2_fields_sobre()
         ],
     ]);
 
+    // Campo Alt do arquivo
+    $cmb->add_field([
+        'name' => 'Texto alternativo da foto',
+        'id' => 'alt_foto_rest',
+        'type' => 'text_medium',
+    ]);
+
     // Campo de repetição
     $sobre = $cmb->add_field([
         'name' => 'Título e texto',

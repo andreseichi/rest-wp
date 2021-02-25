@@ -133,10 +133,10 @@ function cmb2_fields_sobre()
     $cmb-> add_group_field($sobre, [
         'name' => 'Texto',
         'id' => 'texto',
-        'type' => 'wysiwyg',
-        'options' => [
-            'wpautop' => true,
-        ],
+        'type' => 'textarea',
+        // 'options' => [
+        //     'wpautop' => true,
+        // ],
     ]);
 }
 

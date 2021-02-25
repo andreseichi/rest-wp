@@ -99,6 +99,39 @@ function cmb2_fields_sobre()
             'url' => true,
         ],
     ]);
+
+    // Campo de repetição
+    $sobre = $cmb->add_field([
+        'name' => 'Título e texto',
+        'id' => 'sobre',
+        'type' => 'group',
+        'repeatable' => true,
+        'options' => [
+            'group_title' => 'Sobre {#}',
+            'add_button' => 'Adicionar Texto',
+            'remove_button' => 'Remover Texto',
+            'remove_confirm' => 'Deseja remover o texto?',
+            'sortable' => true,
+            'closed' => true,
+        ],
+    ]);
+
+    // Subfield titulo
+    $cmb-> add_group_field($sobre, [
+        'name' => 'Titulo',
+        'id' => 'titulo',
+        'type' => 'text',
+    ]);
+
+    // Subfield texto
+    $cmb-> add_group_field($sobre, [
+        'name' => 'Texto',
+        'id' => 'texto',
+        'type' => 'wysiwyg',
+        'options' => [
+            'wpautop' => true,
+        ],
+    ]);
 }
 
 ?>

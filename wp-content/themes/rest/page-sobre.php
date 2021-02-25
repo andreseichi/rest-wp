@@ -15,6 +15,15 @@
 			</div>
 
 			<div class="grid-8">
+			<?php 
+				$sobre = get_field_cmb2('sobre');
+				if(isset($sobre)) {
+					foreach ($sobre as $about) {
+			?>
+			<h2><?php echo $about['titulo']; ?></h2>
+			<p><?php echo $about['texto']; ?></p>
+			<?php } } ?>
+			
 				<h2>História</h2>
 				<p>O incentivo ao avanço tecnológico, assim como a mobilidade dos capitais internacionais auxilia a preparação e a composição dos níveis de motivação departamental.</p>
 				<p>Gostaria de enfatizar que o desenvolvimento contínuo de distintas formas de atuação prepara-nos para enfrentar situações atípicas decorrentes do remanejamento dos quadros funcionais.</p>

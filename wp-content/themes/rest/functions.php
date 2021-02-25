@@ -29,6 +29,13 @@ function cmb2_fields_home()
         ],
     ]);
 
+    // Criando campo do título da comida
+    $cmb->add_field([
+        'name' => 'Comida',
+        'id' => 'comida',
+        'type' => 'text',
+    ]);
+
     // Criando campo de repetição
     $pratos = $cmb->add_field([
         'name' => 'Pratos',
@@ -41,6 +48,7 @@ function cmb2_fields_home()
             'remove_button' => 'Remover prato',
             'remove_confirm' => 'Deseja remover o prato?',
             'sortable' => true,
+            'closed' => true,
         ],
     ]);
 

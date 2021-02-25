@@ -21,7 +21,7 @@
 					foreach ($sobre as $about) {
 			?>
 			<h2><?php echo $about['titulo']; ?></h2>
-			<p><?php echo $about['texto']; ?></p>
+			<?php echo wpautop($about['texto']); ?>
 			<?php } } ?>
 			
 				<h2>História</h2>

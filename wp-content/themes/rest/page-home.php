@@ -30,29 +30,21 @@
 			</div>
 
 			<div class="menu-item grid-8">
-				<h2>Carnes</h2>
+				<h2><?php the_field_cmb2('comida_direita'); ?></h2>
 				<ul>
+					<?php
+						$pratos_direita = get_field_cmb2('pratos_direita');
+						if (isset($pratos_direita)) {
+							foreach ($pratos_direita as $prato) {
+					?>
 					<li>
-						<span><sup>R$</sup>129</span>
+						<span><sup>R$</sup><?php echo $prato['preco'] ?></span>
 						<div>
-							<h3>Picanha Nobre no Alho</h3>
-							<p>Pequenas tiras de salmão feitas no alho e óleo</p>
+							<h3><?php echo $prato['nome']; ?></h3>
+							<p><?php echo $prato['descricao']; ?></p>
 						</div>
 					</li>
-					<li>
-						<span><sup>R$</sup>89</span>
-						<div>
-							<h3>Cupim no Bafo</h3>
-							<p>Sardinhas escolhidas a dedo e fritas em cerveja premium</p>
-						</div>
-					</li>
-					<li>
-						<span><sup>R$</sup>159</span>
-						<div>
-							<h3>Hamburger Artesanal Rest</h3>
-							<p>Grandes camarões grelhados, servidos ao molho de camarão com catupiry</p>
-						</div>
-					</li>
+					<?php } } ?>
 				</ul>
 			</div>
 

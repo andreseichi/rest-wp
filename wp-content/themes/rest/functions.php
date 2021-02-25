@@ -35,16 +35,16 @@ function cmb2_fields_home()
         ],
     ]);
 
-    // Criando campo do título da comida
+    // Criando campo do título da comida da esquerda
     $cmb->add_field([
-        'name' => 'Comida',
+        'name' => 'Tipo de comida',
         'id' => 'comida',
         'type' => 'text',
     ]);
 
     // Criando campo de repetição
     $pratos = $cmb->add_field([
-        'name' => 'Pratos',
+        'name' => 'Pratos do lado esquerdo',
         'id' => 'pratos',
         'type' => 'group',
         'repeatable' => true,
@@ -78,6 +78,51 @@ function cmb2_fields_home()
         'id' => 'preco',
         'type' => 'text',
     ]);
+
+    // Criando campo do título da comida da direita
+    $cmb->add_field([
+        'name' => 'Tipo de comida',
+        'id' => 'comida_direita',
+        'type' => 'text',
+    ]);
+
+    // Criando campo de repetição
+    $pratos_direita = $cmb->add_field([
+        'name' => 'Pratos do lado direito',
+        'id' => 'pratos_direita',
+        'type' => 'group',
+        'repeatable' => true,
+        'options' => [
+            'group_title' => 'Prato {#}',
+            'add_button' => 'Adicionar prato',
+            'remove_button' => 'Remover prato',
+            'remove_confirm' => 'Deseja remover o prato?',
+            'sortable' => true,
+            'closed' => true,
+        ],
+    ]);
+
+    // Adicionando subfield
+    $cmb->add_group_field($pratos_direita, [
+        'name' => 'Nome',
+        'id' => 'nome',
+        'type' => 'text',
+    ]);
+
+    // Adicionando subfield
+    $cmb->add_group_field($pratos_direita, [
+        'name' => 'Descrição',
+        'id' => 'descricao',
+        'type' => 'textarea',
+    ]);
+
+    // Adicionando subfield
+    $cmb->add_group_field($pratos_direita, [
+        'name' => 'Preço',
+        'id' => 'preco',
+        'type' => 'text',
+    ]);
+    
 }
 
 

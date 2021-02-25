@@ -14,6 +14,12 @@ function the_field_cmb2($key, $page_id = 0)
     echo get_field_cmb2($key, $page_id);
 }
 
+
+function the_field_wpautop($key, $page_id = 0)
+{
+    echo wpautop(get_field_cmb2($key, $page_id));
+}
+
 // Função para adicionar o campo no WP da página home
 add_action('cmb2_admin_init', 'cmb2_fields_home');
 function cmb2_fields_home()

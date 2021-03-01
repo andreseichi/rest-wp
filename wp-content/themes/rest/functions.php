@@ -1,5 +1,22 @@
 <?php
 
+// Funções para Limpar o Header
+remove_action('wp_head', 'rsd_link');
+remove_action('wp_head', 'wlwmanifest_link');
+remove_action('wp_head', 'start_post_rel_link', 10, 0);
+remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
+remove_action('wp_head', 'feed_links_extra', 3);
+remove_action('wp_head', 'wp_generator');
+remove_action('wp_head', 'print_emoji_detection_script', 7);
+remove_action('admin_print_scripts', 'print_emoji_detection_script');
+remove_action('wp_print_styles', 'print_emoji_styles');
+remove_action('admin_print_styles', 'print_emoji_styles');
+
+
+// Habilitar Menus
+add_theme_support('menus');
+
+
 // Função para retornar o objeto meta field
 // Não precisa colocar o id da página se o meta field tiver na mesma página
 function get_field_cmb2($key, $page_id = 0)
@@ -19,6 +36,7 @@ function the_field_wpautop($key, $page_id = 0)
 {
     echo wpautop(get_field_cmb2($key, $page_id));
 }
+
 
 // Função para adicionar o campo no WP da página home
 add_action('cmb2_admin_init', 'cmb2_fields_home');
@@ -122,7 +140,6 @@ function cmb2_fields_home()
         'id' => 'preco',
         'type' => 'text',
     ]);
-    
 }
 
 
@@ -175,14 +192,14 @@ function cmb2_fields_sobre()
     ]);
 
     // Subfield titulo
-    $cmb-> add_group_field($sobre, [
+    $cmb->add_group_field($sobre, [
         'name' => 'Titulo',
         'id' => 'titulo',
         'type' => 'text',
     ]);
 
     // Subfield texto
-    $cmb-> add_group_field($sobre, [
+    $cmb->add_group_field($sobre, [
         'name' => 'Texto',
         'id' => 'texto',
         'type' => 'textarea',
@@ -191,5 +208,3 @@ function cmb2_fields_sobre()
         // ],
     ]);
 }
-
-?>

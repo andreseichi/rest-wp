@@ -208,3 +208,100 @@ function cmb2_fields_sobre()
         // ],
     ]);
 }
+
+
+// Função para adicionar o campo no WP da página contato
+add_action('cmb2_admin_init', 'cmb2_fields_contato');
+function cmb2_fields_contato()
+{
+    // Criando um bloco
+    $cmb = new_cmb2_box([
+        'id' => 'contato_box',
+        'title' => 'Campo personalizado do Contato',
+        'object_types' => ['page'],
+        'show_on' => [
+            'key' => 'page-template',
+            'value' => 'page-contato.php'
+        ],
+    ]);
+    
+    // Campo imagem mapa
+    $cmb->add_field([
+        'name' => 'Mapa Rest',
+        'id' => 'mapa_rest',
+        'type' => 'file',
+        'options' => [
+            'url' => true,
+        ],
+    ]);
+
+    // Campo link mapa
+    $cmb->add_field([
+        'name' => 'Link do mapa Rest',
+        'id' => 'mapa_rest_link',
+        'type' => 'text_medium',
+        // 'options' => [
+        //     'url' => true,
+        // ],
+    ]);
+
+    // Campo Alt do arquivo
+    $cmb->add_field([
+        'name' => 'Texto alternativo da foto',
+        'id' => 'alt_mapa_rest',
+        'type' => 'text_medium',
+    ]);
+
+    // Campo de repetição
+    $contato_coluna = $cmb->add_field([
+        'name' => 'Título e texto',
+        'id' => 'contato',
+        'type' => 'group',
+        'repeatable' => true,
+        'options' => [
+            'group_title' => 'Coluna {#}',
+            'add_button' => 'Adicionar Coluna',
+            'remove_button' => 'Remover coluna',
+            'remove_confirm' => 'Deseja remover a coluna?',
+            'sortable' => true,
+            'closed' => true,
+        ],
+    ]);
+
+    // Subfield titulo
+    $cmb->add_group_field($contato_coluna, [
+        'name' => 'Titulo',
+        'id' => 'titulo',
+        'type' => 'text',
+    ]);
+
+    // Subfield dado
+    $cmb->add_group_field($contato_coluna, [
+        'name' => 'Dado 1',
+        'id' => 'dado1',
+        'type' => 'text_medium',
+        // 'options' => [
+        //     'wpautop' => true,
+        // ],
+    ]);
+
+    // Subfield dado
+    $cmb->add_group_field($contato_coluna, [
+        'name' => 'Dado 2',
+        'id' => 'dado2',
+        'type' => 'text_medium',
+        // 'options' => [
+        //     'wpautop' => true,
+        // ],
+    ]);
+
+    // Subfield dado
+    $cmb->add_group_field($contato_coluna, [
+        'name' => 'Dado 3',
+        'id' => 'dado3',
+        'type' => 'text_medium',
+        // 'options' => [
+        //     'wpautop' => true,
+        // ],
+    ]);
+}
